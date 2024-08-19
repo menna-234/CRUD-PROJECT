@@ -1,6 +1,6 @@
 var teammembers;
 
-localStorage.getItem("teammembers")==null ? teammembers=[] : teammembers = JSON.parse( localStorage.getItem("teammembers") ;
+localStorage.getItem("teammembers")==null ? teammembers=[] : teammembers = JSON.parse(localStorage.getItem("teammembers")) ;
 show(teammembers);
 
 var num;

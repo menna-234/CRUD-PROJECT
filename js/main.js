@@ -24,17 +24,16 @@ function addmembers(){
 
 teammembers.push(member);
 updatelocalstorage();
-console.log(teammembers);
 show(teammembers);
 clear()
- }
+}
 function show(data){
   var  cartona=``;
     for(var i=0;i< data.length ;i++){
        cartona+=`  
          <tr>
                <td>${i+1}</td>
-               <td>${data[i].name}</td>
+               <td>${data[i].newname ? data[i].newname : data[i].name}</td>
                <td>${data[i].Number}</td>
                <td>${data[i].Age}</td>
                <td>${data[i].Email}</td>
@@ -74,13 +73,13 @@ function save(){
     clear();
 }
 function search(data){
-    console.log(data)
-    var newmember = [];
-    for(var i=0; i< teammembers.length ;i++){
-        if (teammembers[i].name.toLowerCase().includes(data.toLowerCase())){
-            newmember.push(teammembers[i])
-            console.log(teammembers[i])
-        }
+var newmember = [];
+for(var i=0; i< teammembers.length ;i++){
+var newdata=data.toLowerCase();
+if (teammembers[i].name.toLowerCase().includes(newdata)){
+teammembers[i].newname= teammembers[i].name.toLowerCase().replaceAll(newdata,`<span class="text-warning">${newdata}</span>`)
+newmember.push(teammembers[i])
+}
 show(newmember)
     }
 }

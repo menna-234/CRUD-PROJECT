@@ -1,11 +1,8 @@
 var teammembers;
-if (localStorage.getItem("teammembers")==null){
-    teammembers=[]
-}
-else{
-    teammembers = JSON.parse( localStorage.getItem("teammembers"))
-}
+
+localStorage.getItem("teammembers")==null ? teammembers=[] : teammembers = JSON.parse( localStorage.getItem("teammembers") ;
 show(teammembers);
+
 var num;
 var savebtn = document.getElementById("savebtn");
 var FuLLName=document.getElementById("FuLL-Name");

@@ -14,18 +14,19 @@ function updatelocalstorage(){
 localStorage.setItem("teammembers" ,JSON.stringify(teammembers))
 }
 function addmembers(){
-
-    var member= {
-        name:FuLLName.value,
-        Number:PhoneNumber.value,
-        Age:Age.value,
-        Email:Email.value,
-    };
-
-teammembers.push(member);
-updatelocalstorage();
-show(teammembers);
-clear()
+if (validdataname()&validdataphone()&validdataage()&validdataemail()){
+        var member= {
+            name:FuLLName.value,
+            Number:PhoneNumber.value,
+            Age:Age.value,
+            Email:Email.value,
+        };
+    teammembers.push(member);
+    updatelocalstorage();
+    validdataname()
+    show(teammembers);
+    clear()
+}
 }
 function show(data){
   var  cartona=``;
@@ -81,5 +82,57 @@ teammembers[i].newname= teammembers[i].name.toLowerCase().replaceAll(newdata,`<s
 newmember.push(teammembers[i])
 }
 show(newmember)
+    }
+}
+function validdataname(){
+var regex = /^[a-zA-Z]*$/
+if (regex.test(FuLLName.value)){
+    FuLLName.style.border="none";
+    document.getElementById("valid").classList.add("d-none");
+    return true ;
+}
+else{
+    FuLLName.style.border="solid  5px red";
+    document.getElementById("valid").classList.remove("d-none");
+    return false;
+}
+}
+function validdataphone(){
+    var regex = /^01(2|5|0|1)[0-9]{8}$/
+    if (regex.test(PhoneNumber.value)){
+        PhoneNumber.style.border="none";
+        document.getElementById("validnumber").classList.add("d-none");
+        return true ;
+    }
+    else{
+        PhoneNumber.style.border="solid  5px red";
+        document.getElementById("validnumber").classList.remove("d-none");
+        return false;
+    }
+}
+function validdataage(){
+    var regex = /^([1-2][0-9]|30)$/
+    if (regex.test(Age.value)){
+        Age.style.border="none";
+        document.getElementById("validage").classList.add("d-none");
+        return true ;
+    }
+    else{
+        Age.style.border="solid  5px red";
+        document.getElementById("validage").classList.remove("d-none");
+        return false;
+    }
+}
+function validdataemail(){
+    var regex = /^\w*@(gmail|yahoo)\.com$/
+    if (regex.test(Email.value)){
+        Email.style.border="none";
+        document.getElementById("validemail").classList.add("d-none");
+        return true ;
+    }
+    else{
+        Email.style.border="solid  5px red";
+        document.getElementById("validemail").classList.remove("d-none");
+        return false;
     }
 }
